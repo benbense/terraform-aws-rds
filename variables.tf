@@ -2,7 +2,6 @@ variable "db_identifier_name" {
   type        = string
   description = "DB Identifier name"
 }
-
 variable "engine_version" {
   type        = string
   description = "DB Engine Version"
