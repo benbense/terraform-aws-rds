@@ -30,3 +30,9 @@ variable "subnets_ids" {
   description = "List of subnets ids"
   type        = list(string)
 }
+
+variable "rds_ingress_ports" {
+  type        = list(string)
+  description = "Postgres RDS ingress ports"
+  default     = [5432]
+}
