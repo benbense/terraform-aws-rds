@@ -10,6 +10,7 @@ resource "aws_db_instance" "postgres_db" {
   vpc_security_group_ids = [aws_security_group.rds_postgres.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
   skip_final_snapshot    = true
+  db_name                = "kandula"
 }
 
 resource "aws_db_subnet_group" "db_subnet_group" {
