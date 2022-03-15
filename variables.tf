@@ -33,11 +33,8 @@ variable "rds_ingress_ports" {
 
 variable "db_password" {
   description = "DB Password"
-  validation {
-    condition     = length(var.db_password) >= 8
-    error_message = "DB Password must be at least 8 characters"
-  }
 }
+
 variable "route53_zone_id" {
   description = "Hosted Zone ID"
   type        = string
