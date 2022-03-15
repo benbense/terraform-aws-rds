@@ -41,13 +41,3 @@ resource "aws_security_group" "rds_postgres" {
     }
   }
 }
-
-resource "random_password" "password" {
-  length           = 16
-  special          = true
-  override_special = "!#$%^&*()"
-  min_special      = 1
-  min_lower        = 1
-  min_numeric      = 1
-  min_upper        = 1
-}

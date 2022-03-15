@@ -30,3 +30,11 @@ variable "rds_ingress_ports" {
   description = "Postgres RDS ingress ports"
   default     = [5432]
 }
+
+variable "db_password" {
+  description = "DB Password"
+  validation {
+    condition = length(var.db_password) >= 8
+    error_message = "DB Password must be at least 8 characters"
+  }
+}
