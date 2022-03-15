@@ -5,7 +5,7 @@ resource "aws_db_instance" "postgres_db" {
   instance_class         = var.instance_class
   identifier             = var.db_identifier_name
   username               = var.db_username
-  password               = random_password.password.result
+  password               = var.db_password
   publicly_accessible    = true
   vpc_security_group_ids = [aws_security_group.rds_postgres.id]
   db_subnet_group_name   = aws_db_subnet_group.db_subnet_group.name
@@ -40,4 +40,12 @@ resource "aws_security_group" "rds_postgres" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   }
+}
+
+resource "aws_route53_record" "postgres_rds" {
+  zone_id = var.route53_zone_id
+  name    = "rds.kandula"
+  type    = "A"
+  ttl     = "300"
+  records = ["${aws_db_instance.postgres_db.address}"]
 }
