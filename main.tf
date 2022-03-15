@@ -45,7 +45,7 @@ resource "aws_security_group" "rds_postgres" {
 resource "aws_route53_record" "postgres_rds" {
   zone_id = var.route53_zone_id
   name    = "rds.kandula"
-  type    = "A"
+  type    = "CNAME"
   ttl     = "300"
   records = ["${aws_db_instance.postgres_db.address}"]
 }
